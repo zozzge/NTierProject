@@ -11,8 +11,7 @@ using System.Threading.Tasks;
 
 namespace DataAccess.Concrete.EntityFramework
 {
-    public class EfProductDal : EfEntityRepositoryBase<Product,NorthWindContext>,IProductDal
+    public class EfOrderDal : EfEntityRepositoryBase<Order, NorthWindContext>, IOrderDal
     {
-        
     }
 }
