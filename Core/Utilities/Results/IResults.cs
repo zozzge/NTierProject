@@ -8,7 +8,7 @@ namespace Core.Utilities.Results
 {
     public interface IResults
     {
-        bool IsSuccess { get; } // You can at the constructor
+        bool IsSuccess { get; } // You can set at the constructor
         string Message { get; } 
     }
 }

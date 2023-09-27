@@ -10,9 +10,9 @@ namespace Business.Constants
     //static: not able to new
     public static class Messages
     {
-        public static string ProductAdded = "Product added successfully";
-        public static string ProductNameInvalid = "Product name invalid";
-        internal static string MaintenanceTime="System is maintaining";
-        internal static string ProductsListed="Products listed.";
+        public static string ProductAdded = "Product added successfully.";
+        public static string ProductNameInvalid = "Product name invalid.";
+        public static string MaintenanceTime="System is maintaining...";
+        public static string ProductsListed="Products listed.";
     }
 }
