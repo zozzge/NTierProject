@@ -1,21 +1,30 @@
+using Autofac;
+using Autofac.Extensions.DependencyInjection;
 using Business.Abstract;
 using Business.Concrete;
 using DataAccess.Abstract;
 using DataAccess.Concrete.EntityFramework;
+using Business.DependencyResolvers.Autofac;
+using Microsoft.AspNetCore.Hosting;
 
 var builder = WebApplication.CreateBuilder(args);
 
 // Add services to the container.
 
 builder.Services.AddControllers();
-builder.Services.AddSingleton<IProductService,ProductManager>(); //Implements a ProductManager when IProductService
-builder.Services.AddSingleton<IProductDal, EfProductDal>();      //is wanted.
-                                                                 //It resolves the need of writing the same
+//builder.Services.AddSingleton<IProductService,ProductManager>(); //Implements a ProductManager when IProductService
+//builder.Services.AddSingleton<IProductDal, EfProductDal>();      //is wanted.
+                                                                  //It resolves the need of writing the same
                                                                  //'new' operation for many times.
 
 // Learn more about configuring Swagger/OpenAPI at https://aka.ms/aspnetcore/swashbuckle
 builder.Services.AddEndpointsApiExplorer();
 builder.Services.AddSwaggerGen();
+
+
+builder.Services.AddSingleton<IHttpContextAccessor, HttpContextAccessor>();
+
+//ServiceTool.Create(builder.Services);
 
 var app = builder.Build();
 
