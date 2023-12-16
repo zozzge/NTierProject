@@ -1,5 +1,6 @@
 using Autofac;
 using Autofac.Extensions.DependencyInjection;
+using Business.DependencyResolvers;
 using Business.Abstract;
 using Business.Concrete;
 using DataAccess.Abstract;
@@ -22,7 +23,13 @@ builder.Services.AddEndpointsApiExplorer();
 builder.Services.AddSwaggerGen();
 
 
-builder.Services.AddSingleton<IHttpContextAccessor, HttpContextAccessor>();
+//builder.Services.AddSingleton<IHttpContextAccessor, HttpContextAccessor>();
+
+builder.Host.UseServiceProviderFactory(new AutofacServiceProviderFactory())
+    .ConfigureContainer<ContainerBuilder>(b =>
+    {
+        b.RegisterModule(new AutofacBusinessModule());
+    });
 
 //ServiceTool.Create(builder.Services);
 

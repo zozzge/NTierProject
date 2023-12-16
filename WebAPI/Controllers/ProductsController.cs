@@ -12,7 +12,7 @@ namespace WebAPI.Controllers
     public class ProductsController : ControllerBase
     {
 
-        IProductService _productService;
+        private readonly IProductService _productService;
 
         public ProductsController(IProductService productService)
         {
@@ -34,7 +34,7 @@ namespace WebAPI.Controllers
                 
         }
 
-        [HttpGet("getbyıd")]
+        [HttpGet("getbyid")]
         public IActionResult GetById(int id)
         {
             var result = _productService.GetById(id);
